@@ -92,6 +92,14 @@ function startEnemie1() {
   context.arc(enemy1XPosition, enemy1YPosition, enemy1Radius,0, Math.PI * 2,);
   context.fill(); 
   enemyMove();
+  let dx = enemy1XPosition - playerXPosition;
+  let dy = enemy1YPosition - playerYPosition;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+  let sumRadius = playerRadius + enemy1Radius;
+
+  if ( distance < sumRadius) {
+    alert('Você perdeu!');
+  }
 }
 function startEnemie2 () {
 
@@ -99,7 +107,15 @@ function startEnemie2 () {
   context.beginPath();
   context.arc(enemy2XPosition, enemy2YPosition, enemy2Radius,0, Math.PI * 2);
   context.fill(); 
-  enemy2Move();   
+  enemy2Move();
+  let dx = enemy2XPosition - playerXPosition;
+  let dy = enemy2YPosition - playerYPosition;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+  let sumRadius = playerRadius + enemy2Radius;
+
+  if ( distance < sumRadius) {
+    alert('Você perdeu!');
+  }   
 }  
 
 function startEnemie3 () {
@@ -108,6 +124,14 @@ function startEnemie3 () {
   context.arc(enemy3XPosition, enemy3YPosition, enemy3Radius,0, Math.PI * 2);
   context.fill(); 
   enemy3Move();
+  let dx = enemy3XPosition - playerXPosition;
+  let dy = enemy3YPosition - playerYPosition;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+  let sumRadius = playerRadius + enemy3Radius;
+
+  if ( distance < sumRadius) {
+    alert('Você perdeu!');
+  }
 }    
 function startEnemie4(){
   context.fillStyle = "blue";
@@ -115,6 +139,14 @@ function startEnemie4(){
   context.arc(enemy4XPosition, enemy4YPosition, enemy4Radius,0, Math.PI * 2);
   context.fill();
   enemy4Move();  
+  let dx = enemy4XPosition - playerXPosition;
+  let dy = enemy4YPosition - playerYPosition;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+  let sumRadius = playerRadius + enemy4Radius;
+
+  if ( distance < sumRadius) {
+    alert('Você perdeu!');
+  }
 }   
     
     
@@ -129,6 +161,11 @@ function enemyMove() {
     enemy1XPosition = Math.floor(Math.random() * (canvas.width - enemy1Radius));
   }
 
+  
+
+
+
+  
 }
 
 function enemy2Move() {
