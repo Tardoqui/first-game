@@ -1,23 +1,44 @@
 #game-screen {
     border: 4px solid rgb(0, 0, 0);
     margin-top: 30px;
-    margin-left: 220px;
+    margin-left: 40px;
     
 
 
 
 }
 h1 {
-    margin-top: 5px;
-    text-align: center;
-    color: rgb(221, 205, 205);
-    font-family: 'Franklin Gothic Medium';
+    
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 8%;
+    color: rgb(255, 255, 255);
+    font-family: 'Comic Sans MS';
     overflow: hidden;
     
 }
 body {
 
-    height: 100vh;
+    
     background: url("../assets/img/background-image.png")
 
+}
+#start-button {
+    margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 8%;
+    
+    
+}
+#reset-button {
+    margin: 0;
+    position: absolute;
+    top: 35%;
+    left: 8%;
+    
+}
+#hits-and-score {
+    border: 4px solid black;
+    margin-left: 10px;
 }
