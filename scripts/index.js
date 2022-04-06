@@ -4,9 +4,20 @@ const canvas2 = document.getElementById('hits-and-score');
 const context2 = canvas2.getContext("2d");
 
 
+context2.fillStyle = "rgb(2, 42, 87)";
+context2.fillRect(0, 0, canvas2.width, canvas2.height);
+
+
+text2('  Press the keyboard arrows: ', '20px Comic Sans MS', 5, 30, 'white');
+text2('↑ up, ↓ down, → right and ← left', '18px Comic Sans MS', 5, 60, 'white')
+text2('           to move the player. ', '18px Comic Sans MS', 5, 90, 'white')
+text2('  To win the game you must avoid ', '18px Comic Sans MS', 5, 130, 'white')
+text2('     the enemies for 60 seconds', '18px Comic Sans MS', 5, 160, 'white')
+text2(" LET'S PLAY", '45px Comic Sans MS', 5, 250, 'white')
+
 
 let playerXPosition = 500;
-let playerYPosition = 300;
+let playerYPosition = 300;       
 let playerRadius = 30; 
 let playerSpeed = 6;
 
@@ -23,12 +34,12 @@ let enemy2Speed = 7;
 let enemy3XPosition = 29;
 let enemy3YPosition = 9;
 let enemy3Radius = 10;
-let enemy3Speed = 5;
+let enemy3Speed = 8;
 
 let enemy4XPosition = 9;
 let enemy4YPosition = 39;
 let enemy4Radius = 10;
-let enemy4Speed = 5;
+let enemy4Speed = 8;
 
 let enemy5XPosition = 9;
 let enemy5YPosition = 290;
@@ -40,15 +51,20 @@ let enemy6YPosition = 140;
 let enemy6Radius = 10;
 let enemy6Speed = 6;
 
-
-
 let upArrow = false;
 let downArrow = false;
 let rightArrow = false;
 let leftArrow = false;
 
+let timeCounter = 0;
+
 function startGame(){
-requestAnimationFrame(startGame);    
+requestAnimationFrame(startGame);  
+if(timeCounter <= 60) {
+  timeCounter += 1/60;
+} else {
+  alert('Congratulations, you won the game!!');
+} 
 imgIteration()
 startChracter()
 startEnemie1()
@@ -59,6 +75,7 @@ startEnemie5()
 startEnemie6()
 arrows()
 screenLimit()
+
 }
 function screenLimit (){
     if (playerYPosition < playerRadius){
@@ -89,10 +106,13 @@ function arrows () {
   }
 }
 function imgIteration(){
-    context2.fillStyle = "rgb(51, 48, 48)";
-    context2.fillRect(0, 0, canvas2.width, canvas2.height);
-    context.fillStyle = "rgb(51, 48, 48)";
+    
+
+
+    context.fillStyle = "rgb(2, 42, 87)";
     context.fillRect(0, 0, canvas.width, canvas.height);
+    text('Time: ' + Math.floor(timeCounter), '35px Comic Sans MS', 6, 35, 'white');
+    
 }
 function startChracter(){
     context.fillStyle = "white";
@@ -113,8 +133,11 @@ function startEnemie1() {
   let sumRadius = playerRadius + enemy1Radius;
 
   if ( distance < sumRadius) {
-    console.log('Você perdeu!');
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
   }
+  
 }
 function startEnemie2 () {
 
@@ -129,7 +152,9 @@ function startEnemie2 () {
   let sumRadius = playerRadius + enemy2Radius;
 
   if ( distance < sumRadius) {
-    console.log('Você perdeu!');
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
   }   
 }  
 
@@ -145,11 +170,13 @@ function startEnemie3 () {
   let sumRadius = playerRadius + enemy3Radius;
 
   if ( distance < sumRadius) {
-    console.log('Você perdeu!');
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
   }
 }    
 function startEnemie4(){
-  context.fillStyle = "blue";
+  context.fillStyle = "yellow";
   context.beginPath();
   context.arc(enemy4XPosition, enemy4YPosition, enemy4Radius,0, Math.PI * 2);
   context.fill();
@@ -160,11 +187,13 @@ function startEnemie4(){
   let sumRadius = playerRadius + enemy4Radius;
 
   if ( distance < sumRadius) {
-    console.log('Você perdeu!');
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
   }   
 }
 function startEnemie5() {
-  context.fillStyle = "blue";
+  context.fillStyle = "yellow";
   context.beginPath();
   context.arc(enemy5XPosition, enemy5YPosition, enemy5Radius,0, Math.PI * 2);
   context.fill();
@@ -175,11 +204,13 @@ function startEnemie5() {
   let sumRadius = playerRadius + enemy5Radius;
 
   if ( distance < sumRadius) {
-    console.log('Você perdeu!');
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
   }
 }
 function startEnemie6(){
-  context.fillStyle = "blue";
+  context.fillStyle = "yellow";
   context.beginPath();
   context.arc(enemy6XPosition, enemy6YPosition, enemy6Radius,0, Math.PI * 2);
   context.fill();
@@ -190,8 +221,16 @@ function startEnemie6(){
   let sumRadius = playerRadius + enemy6Radius;
 
   if ( distance < sumRadius) {
-    console.log('Você perdeu!');
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
   }
+
+}
+function startEndGame(){
+  context.fillStyle = "black";
+  context.fillRect(10, 10, 400, 400);
+  text('ffaefaefefe', '350px Comic Sans MS', 6, 35, 'white');
 
 }
 function enemyMove() {
@@ -268,17 +307,21 @@ function keyUp (event) {
     rightArrow = false;
   }
 }
+function text (txt, fnt, x, y, c) {
+  context.fillStyle = c;
+  context.font = fnt;
+  context.fillText(txt, x, y);
+}
+function text2 (txt, fnt, x, y, c) {
+  context2.fillStyle = c;
+  context2.font = fnt;
+  context2.fillText(txt, x, y);
+}
 function setStartButton (){
   startGame();
 }
-
-function setResetButton(){
-  resetGame();
-}
  
-
 let startButton = document.getElementById('start-button')
-let resetButton = document.getElementById('reset-button')
 
 document.body.addEventListener('keyup', keyUp);
 document.body.addEventListener('keydown', keyDown);
@@ -287,8 +330,6 @@ startButton.addEventListener('click', () => {
   setStartButton ();
 });
 
-resetButton.addEventListener('click', () => {
 
-});
 
 imgIteration()
