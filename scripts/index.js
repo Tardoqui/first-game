@@ -51,6 +51,16 @@ let enemy6YPosition = 140;
 let enemy6Radius = 10;
 let enemy6Speed = 6;
 
+let enemy7XPosition = 159;
+let enemy7YPosition = 9;
+let enemy7Radius = 10;
+let enemy7Speed = 5;
+
+let enemy8XPosition = 9;
+let enemy8YPosition = 240;
+let enemy8Radius = 10;
+let enemy8Speed = 5;
+
 let upArrow = false;
 let downArrow = false;
 let rightArrow = false;
@@ -73,6 +83,8 @@ startEnemie3()
 startEnemie4()
 startEnemie5()
 startEnemie6()
+startEnemie7()
+startEnemie8()
 arrows()
 screenLimit()
 
@@ -107,23 +119,22 @@ function arrows () {
 }
 function imgIteration(){
     
-
-
-    context.fillStyle = "rgb(2, 42, 87)";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    text('Time: ' + Math.floor(timeCounter), '35px Comic Sans MS', 6, 35, 'white');
+  context.fillStyle = "rgb(2, 42, 87)";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  text('Time: ' + Math.floor(timeCounter), '35px Comic Sans MS', 6, 35, 'white');
     
 }
 function startChracter(){
-    context.fillStyle = "white";
-    context.beginPath();
-    context.arc(playerXPosition, playerYPosition  , playerRadius,0, Math.PI * 2);
-    context.fill();
+
+  context.fillStyle = "white";
+  context.beginPath();
+  context.arc(playerXPosition, playerYPosition  , playerRadius,0, Math.PI * 2);
+  context.fill();
 }
 function startEnemie1() {
+
   context.fillStyle = "green";
   context.beginPath();
-    
   context.arc(enemy1XPosition, enemy1YPosition, enemy1Radius,0, Math.PI * 2,);
   context.fill(); 
   enemyMove();
@@ -135,6 +146,8 @@ function startEnemie1() {
   if ( distance < sumRadius) {
     playerXPosition = 500;
     playerYPosition = 300;
+    enemy1XPosition = 9;
+    enemy1YPosition = 9;
     timeCounter = 0;
   }
   
@@ -227,6 +240,43 @@ function startEnemie6(){
   }
 
 }
+function startEnemie7(){
+  context.fillStyle = "green";
+  context.beginPath();
+  context.arc(enemy7XPosition, enemy7YPosition, enemy7Radius,0, Math.PI * 2,);
+  context.fill(); 
+  enemy7Move();
+  let dx = enemy7XPosition - playerXPosition;
+  let dy = enemy7YPosition - playerYPosition;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+  let sumRadius = playerRadius + enemy7Radius;
+
+  if ( distance < sumRadius) {
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
+  }
+  
+}
+function startEnemie8(){
+  context.fillStyle = "yellow";
+  context.beginPath();
+  context.arc(enemy8XPosition, enemy8YPosition, enemy8Radius,0, Math.PI * 2,);
+  context.fill(); 
+  enemy8Move();
+  let dx = enemy8XPosition - playerXPosition;
+  let dy = enemy8YPosition - playerYPosition;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+  let sumRadius = playerRadius + enemy8Radius;
+
+  if ( distance < sumRadius) {
+    playerXPosition = 500;
+    playerYPosition = 300;
+    timeCounter = 0;
+  }
+  
+}
+
 function startEndGame(){
   context.fillStyle = "black";
   context.fillRect(10, 10, 400, 400);
@@ -275,6 +325,21 @@ function enemy6Move(){
   if (enemy6XPosition > canvas.width){
     enemy6XPosition = 0 - enemy4Radius;
     enemy6YPosition = Math.floor(Math.random() * (canvas.height - enemy6Radius));
+  }
+}
+function enemy7Move() {
+  enemy7YPosition += enemy7Speed;
+  if (enemy7YPosition > canvas.height){
+    enemy7YPosition = 0 - enemy7Radius;
+    enemy7XPosition = Math.floor(Math.random() * (canvas.width - enemy7Radius));
+  }
+  
+}
+function enemy8Move() {
+  enemy8XPosition += enemy4Speed;
+  if (enemy8XPosition > canvas.width){
+    enemy8XPosition = 0 - enemy8Radius;
+    enemy8YPosition = Math.floor(Math.random() * (canvas.height - enemy8Radius));
   }
 }
 function keyDown (event) {
