@@ -67,9 +67,13 @@ let rightArrow = false;
 let leftArrow = false;
 
 let timeCounter = 0;
+let audio = new Audio ('../assets/audio/Lines of Code.mp3');
+audio.volume = 0.1;
+audio.play();
 
 function startGame(){
-requestAnimationFrame(startGame);  
+requestAnimationFrame(startGame); 
+ 
 if(timeCounter <= 60) {
   timeCounter += 1/60;
 } else {
@@ -146,8 +150,6 @@ function startEnemie1() {
   if ( distance < sumRadius) {
     playerXPosition = 500;
     playerYPosition = 300;
-    enemy1XPosition = 9;
-    enemy1YPosition = 9;
     timeCounter = 0;
   }
   
@@ -275,13 +277,6 @@ function startEnemie8(){
     timeCounter = 0;
   }
   
-}
-
-function startEndGame(){
-  context.fillStyle = "black";
-  context.fillRect(10, 10, 400, 400);
-  text('ffaefaefefe', '350px Comic Sans MS', 6, 35, 'white');
-
 }
 function enemyMove() {
   enemy1YPosition += enemy1Speed;
