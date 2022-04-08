@@ -7,4 +7,4 @@ O objetivo deste jogo é desviar dos círculos que aparecem aleatoriamente na te
 
 Deploy link: https://tardoqui.github.io/first-game/
 
-Presentation link: https://prezi.com/p/q_ebjnqhi-sg/?present=1
+Presentation link: https://prezi.com/view/9VmXCtnndD64ph8Bal8x/
